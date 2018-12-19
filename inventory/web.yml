@@ -1,0 +1,11 @@
+#; https://docs.ansible.com/ansible/latest/python_3_support.html
+#; https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
+
+all:
+  children:
+    web:
+      hosts:
+        # 18.223.114.174:
+        3.17.61.142:
+  vars:
+    ansible_python_interpreter: /usr/bin/python3

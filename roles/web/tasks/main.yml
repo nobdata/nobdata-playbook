@@ -1,0 +1,48 @@
+---
+- name: "start nginx setting"
+  debug:
+
+- name: Add the user 'nginx'
+  user:
+    name: nginx
+    group: ubuntu
+    shell: /usr/sbin/nologin
+
+- name: Install nginx package
+  become: true
+  apt: name="{{ packages }}" state=present update_cache=yes
+  vars:
+    packages:
+    - nginx
+
+- name: Put /etc/nginx/nginx.conf
+  template:
+    src:   nginx.conf.j2
+    dest:  /etc/nginx/nginx.conf
+    owner: ubuntu
+    group: ubuntu
+    mode:  0644
+    backup: true
+  notify: "restart nginx.service"
+
+- name: Put nginx-redash.conf
+  template:
+    src:   nginx-redash.conf.j2
+    dest:  /etc/nginx/conf.d/nginx-redash.conf
+    owner: ubuntu
+    group: ubuntu
+    mode:  0644
+    backup: true
+  notify: "restart nginx.service"
+
+- name: Execute docker-compose stop nginx
+  command: docker-compose stop nginx
+  args:
+    chdir: /opt/redash
+
+- name: Start nginx.service
+  systemd:
+    name:    nginx.service
+    state:   started
+    enabled: yes
+#  notify: "restart nginx.service"
