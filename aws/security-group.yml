@@ -1,0 +1,33 @@
+---
+- name: Setup base platform
+  hosts: localhost
+  gather_facts: False
+  vars:
+    ec_name: redash-sg
+    aws_region: us-east-2
+    aws_tag: demo
+    aws_ssh_from: 219.98.69.0/24
+    # aws_profile:
+  tasks:
+    - name: example using security group rule descriptions
+      ec2_group:
+        name: "{{ ec_name }}"
+        description: sg with rule descriptions
+        # vpc_id: vpc-xxxxxxxx
+        # profile: "{{ aws_profile }}"
+        region: "{{ aws_region }}"
+        tags:
+          env: "{{ aws_tag }}"
+        rules:
+          - proto: tcp
+            ports:
+            - 22
+            cidr_ip: "{{ aws_ssh_from }}"
+            rule_desc: allow specific host on port 22
+          - proto: tcp
+            ports:
+            - 80
+            - 443
+            - 8888
+            cidr_ip: "0.0.0.0/0"
+            rule_desc: allow all on port 80, 443, 8888
