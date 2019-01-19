@@ -41,12 +41,12 @@ services:
     volumes:
       - /opt/redash/postgres-data:/var/lib/postgresql/data
     restart: always
-  nginx:
-    image: redash/nginx:latest
-    ports:
-      - "80:80"
-    depends_on:
-      - server
-    links:
-      - server:redash
-    restart: always
+#  nginx:
+#    image: redash/nginx:latest
+#    ports:
+#      - "80:80"
+#    depends_on:
+#      - server
+#    links:
+#      - server:redash
+#    restart: always

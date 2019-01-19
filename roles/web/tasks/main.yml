@@ -40,6 +40,14 @@
   args:
     chdir: /opt/redash
 
+- name: Replace docker-compose.yml
+  copy:
+    src:   docker-compose.yml
+    dest:  /opt/redash/docker-compose.yml
+    owner: root
+    group: root
+    mode:  0644
+
 - name: Start nginx.service
   systemd:
     name:    nginx.service
