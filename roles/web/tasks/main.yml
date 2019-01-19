@@ -39,6 +39,8 @@
   command: docker-compose stop nginx
   args:
     chdir: /opt/redash
+  tags:
+    - onetime
 
 - name: Replace docker-compose.yml
   copy:
@@ -47,6 +49,7 @@
     owner: root
     group: root
     mode:  0644
+  diff: yes
 
 - name: Start nginx.service
   systemd:
