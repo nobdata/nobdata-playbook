@@ -1,0 +1,21 @@
+{
+    "LaunchTemplateVersions": [
+        {
+            "LaunchTemplateId": "lt-0432ccc8d615d7b0b",
+            "LaunchTemplateName": "redash",
+            "VersionNumber": 5,
+            "CreateTime": "2019-01-19T13:40:44.000Z",
+            "CreatedBy": "arn:aws:iam::949140100595:root",
+            "DefaultVersion": false,
+            "LaunchTemplateData": {
+                "ImageId": "ami-0ab20edfe03e276ce",
+                "InstanceType": "t2.small",
+                "KeyName": "ssh-for-redash",
+                "SecurityGroupIds": [
+                    "sg-092018296fc0b1ec9",
+                    "sg-0c42e6e89bdc87a87"
+                ]
+            }
+        }
+    ]
+}
