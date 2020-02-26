@@ -1,5 +1,5 @@
 alabaster==0.7.12
-ansible==2.7.12
+ansible==2.7.16
 ansible-kernel==0.8.0
 ansible-runner==1.1.2
 asn1crypto==0.24.0
