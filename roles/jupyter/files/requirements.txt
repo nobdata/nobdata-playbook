@@ -1,7 +1,7 @@
 alabaster==0.7.12
 ansible==2.7.16
 ansible-kernel==0.8.0
-ansible-runner==1.1.2
+ansible-runner==2.1.1
 asn1crypto==0.24.0
 Babel==2.6.0
 backcall==0.1.0
