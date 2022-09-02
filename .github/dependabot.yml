@@ -21,3 +21,4 @@ updates:
       - dependency-name: "cryptography"
       - dependency-name: "paramiko"
       - dependency-name: "bleach"
+      - dependency-name: "mistune"
